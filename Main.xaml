@@ -109,7 +109,6 @@
   <Sequence sap2010:Annotation.AnnotationText="Downloadchallenge.xlsx from RPAchallenge website and enter the fields &#xA;&#xA;&#xA;" DisplayName="RPAChallenge" sap:VirtualizedContainerService.HintSize="641.6,4078.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_challenge" />
-      <Variable x:TypeArguments="x:String" Name="variable" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="counter" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
