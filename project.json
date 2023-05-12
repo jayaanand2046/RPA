@@ -13,7 +13,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.4.0.0",
-  "projectVersion": "1.0.0",
+  "projectVersion": "1.0.137607296",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -40,19 +40,23 @@
       "privateWorkflows": []
     },
     "processOptions": {
-      "ignoredFiles": []
+      "ignoredFiles": [
+        "Main.xaml"
+      ]
     },
-    "fileInfoCollection": [],
+    "fileInfoCollection": [
+      {
+        "editingStatus": "Publishable",
+        "testCaseId": "0a14a414-e40b-4f95-8bdb-98e1aa429987",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TestCase.xaml"
+      }
+    ],
     "modernBehavior": true
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
-    {
-      "filePath": "Main.xaml",
-      "uniqueId": "4a7045bc-6ea4-481e-a513-89c71d4346a4",
-      "input": [],
-      "output": []
-    },
     {
       "filePath": "Main - Imported.xaml",
       "uniqueId": "cae060b6-a47f-4f34-9866-03d59f6034a6",
