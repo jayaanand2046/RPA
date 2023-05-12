@@ -1,7 +1,7 @@
 {
   "name": "RPA",
   "description": "Blank Process",
-  "main": "Main - Imported.xaml",
+  "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.19.0-preview]",
     "UiPath.Mail.Activities": "[1.18.2]",
@@ -41,7 +41,7 @@
     },
     "processOptions": {
       "ignoredFiles": [
-        "Main.xaml"
+        "Main1.xaml"
       ]
     },
     "fileInfoCollection": [
@@ -58,8 +58,8 @@
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
-      "filePath": "Main - Imported.xaml",
-      "uniqueId": "cae060b6-a47f-4f34-9866-03d59f6034a6",
+      "filePath": "Main.xaml",
+      "uniqueId": "09ae4a34-5d60-40a4-9752-bba7b99ec351",
       "input": [],
       "output": []
     }
