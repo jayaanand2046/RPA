@@ -5,17 +5,59 @@
 
 trigger:
 - main
+
+pool: 'jaya Agent pool'
+
+
 variables:
 - group: RPAVariableGroup
 
-pool:
-  vmImage: Windows-latest
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+stages:
+  - stage: Build
+    displayName: Build Package
+    jobs:
+    - job: BuildPackage
+      pool: 'jaya Agent pool'
+      steps:
+      - task: UiPathPack@3
+        inputs:
+          versionType: 'AutoVersion'
+          projectJsonPath: '$(Build.SourcesDirectory)\project.json'
+          outputType: 'Process'
+          orchestratorConnection: 'jayacicdOrchestartorDefaultTenantconnection'
+          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+      - publish: '$(Build.ArtifactStagingDirectory)'
+        artifact: drop
+  - stage: Asset
+    displayName: Create Asset
+    jobs:
+      - job: CreateAssets
+        pool : 'jaya Agent pool'
+        
+         
+        steps:
+          - task: UiPathAssets@3
+            inputs:
+             orchestratorConnection: 'jayacicdOrchestartorDefaultTenantconnection'
+             folderName: 'jaya'
+             assetActionType: 'Deploy'
+             csvFile: '$(Build.SourcesDirectory)\Data\Assets.csv'
+  - stage: DeployDev
+    displayName: Deploy Package to Dev Orchestrator
+    dependsOn: Build
+    condition: succeeded()
+    jobs:
+      - deployment: deployDEV
+        displayName: Deploy package to dev orchestrator
+        pool: 'jaya Agent pool'
+         
+        environment: Dev
+        strategy:
+         runOnce:
+           deploy:
+             steps:
+               - task: UiPathDeploy@3
+                 inputs:
+                   orchestratorConnection: 'jayacicdOrchestartorDefaultTenantconnection'
+                   packagesPath: '$(Pipeline.Workspace)\drop\'
+                   folderName: 'jaya/Dev'
