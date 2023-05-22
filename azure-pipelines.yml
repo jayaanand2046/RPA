@@ -41,7 +41,7 @@ stages:
              orchestratorConnection: 'jayacicdOrchestartorDefaultTenantconnection'
              folderName: 'jaya'
              assetActionType: 'Deploy'
-             csvFile: '$(Build.SourcesDirectory)\Data\Assets.csv'
+             csvFile: '$(Build.SourcesDirectory)\Assets.csv'
   - stage: DeployDev
     displayName: Deploy Package to Dev Orchestrator
     dependsOn: Build
