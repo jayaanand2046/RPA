@@ -26,7 +26,7 @@ stages:
           outputType: 'Process'
           orchestratorConnection: 'jayacicdOrchestartorDefaultTenantconnection'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
-      - publish: '$(Build.ArtifactStagingDirectory)'
+      - publish: '$(Build.ArtifactStagingDirectory)\Output'
         artifact: drop
   - stage: Asset
     displayName: Create Asset
@@ -60,5 +60,5 @@ stages:
                - task: UiPathDeploy@3
                  inputs:
                    orchestratorConnection: 'jayacicdOrchestartorDefaultTenantconnection'
-                   packagesPath: '$(Pipeline.Workspace)\drop\'
+                   packagesPath: '$(Pipeline.Workspace)\drop'
                    folderName: 'jaya/Dev'
